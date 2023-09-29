@@ -1,21 +1,20 @@
 
 import React from "react";
-import { Alert, Button, StyleSheet, Text,View } from "react-native";
+import { Alert, Button, StyleSheet, Text, View } from "react-native";
 import ListPage from "./pages/ListPage";
 import MainPage from "./pages/MainPage";
-
+import { UserProvider, useData } from "./context/userContext";
 function App() {
-  
-  return(
-    <View style={styles.container}>
-      <MainPage/>
-   <ListPage/>
-    </View>
+
+  return (
+    <UserProvider>
+      <View>
+        {/* <MainPage /> */}
+        <ListPage/>
+
+      </View>
+    </UserProvider>
   )
 }
-const styles = StyleSheet.create({
-  conitaner:{
-    
-  }
-})
+
 export default App;

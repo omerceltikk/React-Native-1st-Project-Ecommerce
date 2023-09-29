@@ -1,8 +1,21 @@
-import React from 'react'
-import { StyleSheet, Text, View, Image, TextInput, TouchableOpacity } from 'react-native'
-import Logo from "../../../img/logo.png"
-
+import React, { useRef, useState } from 'react'
+import { Text, View, Image, TextInput, TouchableOpacity, Alert } from 'react-native'
+import styles from "./MainPage.style";
+import data from "../../db/usersdB.json";
+import { useData } from '../../context/userContext';
 const MainPage = () => {
+  const {setUser} = useData();
+  const email = useRef();
+  const password = useRef();
+  function handlePress() {
+    if(email.current.value.length > 3 && password.current.value.length >3){
+     const user = data.users.find((item) => item.email == email.current.value && item.password == password.current.value)
+     console.log(user);
+    setUser(user)
+    }else{
+    Alert.alert("password and email can not be empty")
+    }
+  }
   return (
     <View style={styles.container}>
       <View style={styles.main}>
@@ -16,72 +29,29 @@ const MainPage = () => {
           blurOnSubmit={true}
           inputMode="text"
           placeholder='Type an E-mail...'
-        // onChangeText={(e) => HandleChange(e)}
+          ref={email}
+        onChangeText={(e) => email.current.value = e}
         // value={text}
+
         />
         <TextInput
           style={styles.input}
           blurOnSubmit={true}
-          inputMode="password"
+          inputMode="text"
           placeholder='Password...'
-        // onChangeText={(e) => HandleChange(e)}
+          ref={password}
+        onChangeText={(e) => password.current.value = e}
         // value={text}
         />
-        <TouchableOpacity style={styles.button}> 
-          <Text style={styles.textColor}>Submit</Text>
+        <TouchableOpacity onPress={() => handlePress()} style={styles.button}>
+          <Text style={styles.textColor}>Log In</Text>
+        </TouchableOpacity>
+        <TouchableOpacity>
+          <Text style={styles.link}>or create an account on this link!</Text>
         </TouchableOpacity>
       </View>
     </View>
   )
 }
-const styles = StyleSheet.create({
-  container: {
-    // justifyContent: "center",
-    alignItems: "center",
-    height: "100%",
-    backgroundColor: "#ededed"
-  },
-  main: {
-    display: "flex",
-    flexDirection: "column",
-    gap: 20,
-    width: "100%",
-    marginTop:40,
-    padding: 50,
 
-  },
-  input: {
-    borderRadius: 100,
-    paddingHorizontal: 20,
-    backgroundColor: "#dadada",
-  },
-  imageStyle: {
-    zIndex: 1,
-    width: 400,
-    height: 300,
-    alignSelf:"center",
-
-  },
-  button:{
-    padding:10,
-    paddingHorizontal:60,
-    // width:"50%",
-    textAlign:"center",
-    alignSelf:"center",
-    backgroundColor:"#E74646",
-    borderRadius:100,
-    color:"#fff"
-    
-  },
-  company:{
-    fontWeight:"700",
-    fontSize:35,
-    textAlign:"center",
-    color:"#E74646",
-    marginBottom:10
-  },
-  textColor:{
-    color:"#fff"
-  }
-})
 export default MainPage
