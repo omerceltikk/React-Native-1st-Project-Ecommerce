@@ -56,8 +56,8 @@ const ListPage = () => {
 }
 const styles = StyleSheet.create({
   ListPage: {
-    
-    backgroundColor: "#fdf5eb"
+ 
+    backgroundColor: "#060047"
   },
   searchArea:{
     margin:20,
@@ -74,7 +74,7 @@ const styles = StyleSheet.create({
     fontWeight:"800",
     fontSize:30,
     paddingLeft:10,
-    color:"#5C5470",
+    color:"#E74646",
     margin:10
 
   },
