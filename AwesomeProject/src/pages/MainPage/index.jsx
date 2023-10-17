@@ -7,6 +7,7 @@ const MainPage = ({navigation}) => {
   const {setUser} = useData();
   const email = useRef();
   const password = useRef();
+
   function handlePress() {
     if(email.current.value?.length > 3 && password.current.value?.length >3){
      const user = data.users.find((item) => item.email == email.current.value && item.password == password.current.value)
@@ -35,7 +36,6 @@ const MainPage = ({navigation}) => {
           placeholder='Type an E-mail...'
           ref={email}
         onChangeText={(e) => email.current.value = e}
-        // value={text}
 
         />
         <TextInput
@@ -45,7 +45,7 @@ const MainPage = ({navigation}) => {
           placeholder='Password...'
           ref={password}
         onChangeText={(e) => password.current.value = e}
-        // value={text}
+        secureTextEntry={true}
         />
         <TouchableOpacity onPress={() => handlePress()} style={styles.button}>
           <Text style={styles.textColor}>Log In</Text>

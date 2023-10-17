@@ -54,7 +54,6 @@ const ListPage = ({navigation}) => {
           blurOnSubmit={true}
           inputMode="search"
           onChangeText={(e) => HandleChange(e)}
-        // value={text}
         />
       </View>
       <ScrollView style={styles.scroll}>

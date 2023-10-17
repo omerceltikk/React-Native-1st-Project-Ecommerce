@@ -2,7 +2,6 @@ import React from 'react'
 import styles from "./Card.style"
 import { Text, View ,Image, Dimensions} from 'react-native'
 
-// const win = Dimensions.get('window');
 const Card = ({product}) => {
 
   return (

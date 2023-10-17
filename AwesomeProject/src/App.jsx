@@ -1,8 +1,7 @@
-
 import React from "react";
 import ListPage from "./pages/ListPage";
 import MainPage from "./pages/MainPage";
-import { UserProvider, useData } from "./context/userContext";
+import { UserProvider } from "./context/userContext";
 import { NavigationContainer } from '@react-navigation/native';
 import 'react-native-gesture-handler';
 import { createStackNavigator } from '@react-navigation/stack';
