@@ -1,17 +1,13 @@
 
 import React from "react";
-import { Alert, Button, StyleSheet, Text, View } from "react-native";
-import ListPage from "./pages/ListPage";
-import MainPage from "./pages/MainPage";
-import { UserProvider, useData } from "./context/userContext";
+import {View } from "react-native";
+import { UserProvider } from "./context/userContext";
+import General from "./pages/General";
 function App() {
-
   return (
     <UserProvider>
       <View>
-        {/* <MainPage /> */}
-        <ListPage/>
-
+        <General />
       </View>
     </UserProvider>
   )

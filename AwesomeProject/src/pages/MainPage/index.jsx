@@ -1,7 +1,7 @@
-import React, { useRef, useState } from 'react'
+import React, { useRef, useState} from 'react'
 import { Text, View, Image, TextInput, TouchableOpacity, Alert } from 'react-native'
 import styles from "./MainPage.style";
-import data from "../../db/usersdB.json";
+import data from "../../../db/usersdB.json";
 import { useData } from '../../context/userContext';
 const MainPage = () => {
   const {setUser} = useData();
@@ -10,8 +10,11 @@ const MainPage = () => {
   function handlePress() {
     if(email.current.value.length > 3 && password.current.value.length >3){
      const user = data.users.find((item) => item.email == email.current.value && item.password == password.current.value)
-     console.log(user);
-    setUser(user)
+     if(user){
+       setUser(user);
+     }else{
+      Alert.alert("Password or email did not match")
+     }
     }else{
     Alert.alert("password and email can not be empty")
     }
