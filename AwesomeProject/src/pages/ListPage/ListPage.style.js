@@ -31,7 +31,7 @@ export default StyleSheet.create({
     borderWidth: 1
   },
   scroll:{
-    marginBottom:400
+    marginBottom:300
   },
   userstatus:{
     color: "#B9B4C7",

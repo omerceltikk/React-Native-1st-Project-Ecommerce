@@ -3,15 +3,16 @@ import { Text, View, Image, TextInput, TouchableOpacity, Alert } from 'react-nat
 import styles from "./MainPage.style";
 import data from "../../../db/usersdB.json";
 import { useData } from '../../context/userContext';
-const MainPage = () => {
+const MainPage = ({navigation}) => {
   const {setUser} = useData();
   const email = useRef();
   const password = useRef();
   function handlePress() {
-    if(email.current.value.length > 3 && password.current.value.length >3){
+    if(email.current.value?.length > 3 && password.current.value?.length >3){
      const user = data.users.find((item) => item.email == email.current.value && item.password == password.current.value)
      if(user){
        setUser(user);
+       navigation.navigate("Market");
      }else{
       Alert.alert("Password or email did not match")
      }
